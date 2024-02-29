@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\Beranda\PhotoController;
 use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
+use App\Http\Controllers\Dashboard\Beranda\RevenueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/photo', [PhotoController::class, 'index']);
         Route::post('/photo', [PhotoController::class, 'store_photo']);
         Route::delete('/photo/{id}', [PhotoController::class, 'delete_photo']);
+
+        // revenue
+        Route::get('/revenue', [RevenueController::class, 'index']);
+        Route::post('/revenue/change', [RevenueController::class, 'change']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
