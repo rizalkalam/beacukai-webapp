@@ -73,6 +73,7 @@ return [
         // public_path('storage') => storage_path('app/public'),
         public_path('banners') => storage_path('app/banners'),
         public_path('photos') => storage_path('app/photos'),
+        public_path('file_cukai') => storage_path('app/file_cukai'),
     ],
 
 ];

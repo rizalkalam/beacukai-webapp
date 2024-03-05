@@ -16,16 +16,26 @@ class CukaiSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'name' => 'PMK No. 66/PMK.04/2018 tentang Tata Cara Pemberian, Pembekuan',
                 'file' => 'file/tes123.pdf',
                 'regulation_id' => 1
             ],
 
             [
                 'id' => 2,
-                'name' => 'Surat Edaran Dirjen Bea dan Cukai No. SE-07/BC/2009',
                 'file' => 'file/tes123.pdf',
                 'regulation_id' => 1
+            ],
+
+            [
+                'id' => 3,
+                'file' => 'file/testestes.pdf',
+                'regulation_id' => 2
+            ],
+
+            [
+                'id' => 4,
+                'file' => 'file/cobates.pdf',
+                'regulation_id' => 3
             ],
         ];
 

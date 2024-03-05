@@ -6,8 +6,13 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CukaiSeeder;
+use Database\Seeders\PhotoSeeder;
+use Database\Seeders\VideoSeeder;
+use Database\Seeders\BannerSeeder;
 use Database\Seeders\RevenueSeeder;
+use Database\Seeders\KepabeananSeeder;
 use Database\Seeders\CukaiRegulationSeeder;
+use Database\Seeders\KepabeananRegulationSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,9 +30,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            BannerSeeder::class,
+            VideoSeeder::class,
+            PhotoSeeder::class,
             RevenueSeeder::class,
             CukaiSeeder::class,
             CukaiRegulationSeeder::class,
+            KepabeananSeeder::class,
+            KepabeananRegulationSeeder::class,
         ]);
     }
 }

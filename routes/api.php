@@ -7,6 +7,8 @@ use App\Http\Controllers\Dashboard\Beranda\PhotoController;
 use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
 use App\Http\Controllers\Dashboard\Beranda\RevenueController;
+use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
+use App\Http\Controllers\Dashboard\Peraturan\CukaiRegulationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +52,24 @@ Route::middleware('auth:sanctum')->group(function () {
         // revenue
         Route::get('/revenue', [RevenueController::class, 'index']);
         Route::post('/revenue/change', [RevenueController::class, 'change']);
+
+        // cukai
+        Route::get('/cukai/{id}', [CukaiController::class, 'by_regulation']);
+        Route::post('/cukai', [CukaiController::class, 'store']);
+        Route::delete('/cukai/{id}', [CukaiController::class, 'delete']);
+        // cukai regulation
+        Route::get('/cukai/regulation', [CukaiRegulationController::class, 'index']);
+        Route::get('/cukai/regulation/{regulation_id}', [CukaiRegulationController::class, 'getRegulationById']);
+        Route::post('/cukai/regulation', [CukaiRegulationController::class, 'create']);
+        Route::post('/cukai/regulation/{regulation_id}', [CukaiRegulationController::class, 'update']);
+        Route::delete('/cukai/regulation/{regulation_id}', [CukaiRegulationController::class, 'delete']);
+
+        // kepabeanan
+
+        // kepabeanan regulation
     });
+
+    Route::get('/');
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });

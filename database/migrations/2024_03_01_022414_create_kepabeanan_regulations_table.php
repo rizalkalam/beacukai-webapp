@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cukais', function (Blueprint $table) {
+        Schema::create('kepabeanan_regulations', function (Blueprint $table) {
             $table->id();
-            $table->string('file');
-            $table->foreignId('regulation_id');
+            $table->string('regulation_name');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cukais');
+        Schema::dropIfExists('kepabeanan_regulations');
     }
 };
