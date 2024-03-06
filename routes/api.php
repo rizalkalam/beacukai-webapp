@@ -8,7 +8,9 @@ use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
 use App\Http\Controllers\Dashboard\Beranda\RevenueController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
+use App\Http\Controllers\Dashboard\Peraturan\KepabeananController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiRegulationController;
+use App\Http\Controllers\Dashboard\Peraturan\KepabeananRegulationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,23 +55,33 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/revenue', [RevenueController::class, 'index']);
         Route::post('/revenue/change', [RevenueController::class, 'change']);
 
+        //regulation
+        Route::group(['prefix'=>'regulation'], function(){
+            // cukai
+            Route::get('/cukai', [CukaiRegulationController::class, 'index']);
+            Route::get('/cukai/{regulation_id}', [CukaiRegulationController::class, 'getRegulationById']);
+            Route::post('/cukai', [CukaiRegulationController::class, 'create']);
+            Route::post('/cukai/{regulation_id}', [CukaiRegulationController::class, 'update']);
+            Route::delete('/cukai/{regulation_id}', [CukaiRegulationController::class, 'delete']);
+
+            // kepabeanan
+            Route::get('/kepabeanan', [KepabeananRegulationController::class, 'index']);
+            Route::get('/kepabeanan/{regulation_id}', [KepabeananRegulationController::class, 'getRegulationById']);
+            Route::post('/kepabeanan', [KepabeananRegulationController::class, 'create']);
+            Route::post('/kepabeanan/{regulation_id}', [KepabeananRegulationController::class, 'update']);
+            Route::delete('/kepabeanan/{regulation_id}', [KepabeananRegulationController::class, 'delete']);
+        });
+
         // cukai
-        Route::get('/cukai/{id}', [CukaiController::class, 'by_regulation']);
+        Route::get('/cukai/{id}', [CukaiController::class, 'getByRegulationId']);
         Route::post('/cukai', [CukaiController::class, 'store']);
         Route::delete('/cukai/{id}', [CukaiController::class, 'delete']);
-        // cukai regulation
-        Route::get('/cukai/regulation', [CukaiRegulationController::class, 'index']);
-        Route::get('/cukai/regulation/{regulation_id}', [CukaiRegulationController::class, 'getRegulationById']);
-        Route::post('/cukai/regulation', [CukaiRegulationController::class, 'create']);
-        Route::post('/cukai/regulation/{regulation_id}', [CukaiRegulationController::class, 'update']);
-        Route::delete('/cukai/regulation/{regulation_id}', [CukaiRegulationController::class, 'delete']);
 
         // kepabeanan
-
-        // kepabeanan regulation
+        Route::get('/kepabeanan/{id}', [KepabeananController::class, 'getByRegulationId']);
+        Route::post('/kepabeanan', [KepabeananController::class, 'store']);
+        Route::delete('/kepabeanan/{id}', [KepabeananController::class, 'delete']);
     });
-
-    Route::get('/');
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });

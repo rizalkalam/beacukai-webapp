@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\CukaiRegulation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreCukaiRegulationRequest;
 
 class CukaiRegulationController extends Controller
 {

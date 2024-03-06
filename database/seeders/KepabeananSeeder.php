@@ -16,7 +16,7 @@ class KepabeananSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'file' => 'file/tes123.pdf',
+                'file' => 'file_kepabeanan/tes123.pdf',
                 'regulation_id' => 1
             ],
         ];

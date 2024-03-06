@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CukaiController extends Controller
 {
-    public function by_regulation($id)
+    public function getByRegulationId($id)
     {
         $data = Cukai::join('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')
         ->where('regulation_id', $id)
@@ -19,7 +19,7 @@ class CukaiController extends Controller
         return response()->json([
             "success" => true,
             "message" => "cukai",
-            "kelas" => $data,
+            "data" => $data,
         ], 200);
     }
 
@@ -44,7 +44,7 @@ class CukaiController extends Controller
             $file->storeAs('file_cukai', $file_name);
 
             $data = Cukai::create([
-                'file' => $file_name,
+                'file' => 'file_kepabeanan/' . $file_name,
                 'regulation_id' => request('regulation_id'),
             ]);
 

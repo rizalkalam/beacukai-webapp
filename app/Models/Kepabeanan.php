@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Kepabeanan extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
 }
