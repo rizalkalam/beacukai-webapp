@@ -16,24 +16,28 @@ class CukaiSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
+                'title' => 'tes123.pdf',
                 'file' => 'file_cukai/tes123.pdf',
                 'regulation_id' => 1
             ],
 
             [
                 'id' => 2,
+                'title' => 'tes123.pdf',
                 'file' => 'file_cukai/tes123.pdf',
                 'regulation_id' => 1
             ],
 
             [
                 'id' => 3,
+                'title' => 'tes123.pdf',
                 'file' => 'file_cukai/testestes.pdf',
                 'regulation_id' => 2
             ],
 
             [
                 'id' => 4,
+                'title' => 'tes123.pdf',
                 'file' => 'file_cukai/cobates.pdf',
                 'regulation_id' => 3
             ],

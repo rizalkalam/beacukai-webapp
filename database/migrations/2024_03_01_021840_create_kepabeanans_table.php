@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kepabeanans', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('file');
             $table->foreignId('regulation_id');
             $table->timestamps();

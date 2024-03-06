@@ -14,6 +14,10 @@ class KepabeananController extends Controller
     {
         $data = Kepabeanan::join('kepabeanan_regulations', 'kepabeanan_regulations.id', '=', 'kepabeanans.regulation_id')
         ->where('regulation_id', $id)
+        ->select([
+            'kepabeanans.title',
+            'kepabeanans.file'
+        ])
         ->get();
 
         return response()->json([
@@ -44,6 +48,7 @@ class KepabeananController extends Controller
             $file->storeAs('file_kepabeanan', $file_name);
 
             $data = Kepabeanan::create([
+                'title' => $file_name,
                 'file' => 'file_kepabeanan/' . $file_name,
                 'regulation_id' => request('regulation_id'),
             ]);

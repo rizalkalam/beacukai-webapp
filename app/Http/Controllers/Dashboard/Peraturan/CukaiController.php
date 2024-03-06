@@ -14,6 +14,10 @@ class CukaiController extends Controller
     {
         $data = Cukai::join('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')
         ->where('regulation_id', $id)
+        ->select([
+            'cukais.title',
+            'cukais.file'
+        ])
         ->get();
 
         return response()->json([
@@ -44,6 +48,7 @@ class CukaiController extends Controller
             $file->storeAs('file_cukai', $file_name);
 
             $data = Cukai::create([
+                'title' => $file_name,
                 'file' => 'file_kepabeanan/' . $file_name,
                 'regulation_id' => request('regulation_id'),
             ]);

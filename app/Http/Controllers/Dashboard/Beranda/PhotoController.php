@@ -24,7 +24,7 @@ class PhotoController extends Controller
     public function store_photo(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'file' => 'image|mimes:jpeg,png,jpg,gif,svg'
+            'file' => 'mimes:jpeg,png,jpg,gif,svg|file|size:3048'
         ]);
 
         if ($validator->fails()) {
