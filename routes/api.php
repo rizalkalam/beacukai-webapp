@@ -2,12 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Client\BerandaController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\Beranda\PhotoController;
 use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
 use App\Http\Controllers\Dashboard\Beranda\RevenueController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
+use App\Http\Controllers\Dashboard\Profile\SopCategoryController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiRegulationController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananRegulationController;
@@ -81,7 +83,20 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/kepabeanan/{id}', [KepabeananController::class, 'getByRegulationId']);
         Route::post('/kepabeanan', [KepabeananController::class, 'store']);
         Route::delete('/kepabeanan/{id}', [KepabeananController::class, 'delete']);
+
+        // sop
+        Route::get('/sop', [SopCategoryController::class, 'index']);
+        Route::get('/sop/{id}', [SopCategoryController::class, 'getSopById']);
+        Route::post('/sop', [SopCategoryController::class, 'create']);
+        Route::post('/sop/{id}', [SopCategoryController::class, 'update']);
+        Route::delete('/sop/{id}', [SopCategoryController::class, 'delete']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+// homepage
+Route::get('/banners', [BerandaController::class, 'banners']);
+Route::get('/videos', [BerandaController::class, 'videos']);
+Route::get('/photos', [BerandaController::class, 'photos']);
+Route::get('/revenue', [BerandaController::class, 'revenue']);
