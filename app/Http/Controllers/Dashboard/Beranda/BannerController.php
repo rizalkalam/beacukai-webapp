@@ -24,7 +24,7 @@ class BannerController extends Controller
     public function store_banner(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'file' => 'required|mimes:jpeg,png,jpg,gif,svg|file|size:3048'
+            'file' => 'required|mimes:jpeg,png,jpg,gif,svg|file|max:3048'
         ]);
 
         if ($validator->fails()) {
