@@ -1,42 +1,42 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Beranda;
+namespace App\Http\Controllers\Dashboard\Profile;
 
-use App\Models\Video;
+use App\Models\Achievement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class VideoController extends Controller
+class AchievementController extends Controller
 {
-    public function index()
+    public function getAchievement()
     {
-        $data = Video::get();
+        $data = Achievement::get();
 
         return response()->json([
             'success' => true,
-            'message' => 'List data video',
+            'message' => 'data achievement',
             'data' => $data,
         ]);
     }
 
-    public function video_id($id)
+    public function getAchievementById($id)
     {
-        $data = Video::where('id', '=', $id)
+        $data = Achievement::where('id', '=', $id)
         ->first();
 
         return response()->json([
             'success' => true,
-            'message' => 'Data video by id '.$id,
+            'message' => 'data achievement',
             'data' => $data,
         ]);
     }
 
-    public function store_video(Request $request)
+    public function create(Request $request)
     {
         $validator = Validator::make($request->all(),[
             'title' => 'required',
-            'link' => 'required'
+            'date' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -48,16 +48,15 @@ class VideoController extends Controller
         }
 
         try {
-            $data = Video::create([
+            $data = Achievement::create([
                 'title' => request('title'),
-                'link' => request('link')
+                'date' => request('date')
             ]);
 
             return response()->json([
-                'message' => 'Store video success',
+                'message' => 'Store achievement success',
                 'data' => $data,
             ]);
-
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
@@ -67,11 +66,11 @@ class VideoController extends Controller
         }
     }
 
-    public function update_video(Request $request, $id)
+    public function edit(Request $request, $id)
     {
         $validator = Validator::make($request->all(),[
             'title' => 'required',
-            'link' => 'required'
+            'date' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -83,19 +82,18 @@ class VideoController extends Controller
         }
 
         try {
-            $video_id = Video::where('id', '=', $id)
+            $achievement = Achievement::where('id', '=', $id)
             ->first();
 
-            $video_id->update([
+            $achievement->update([
                 'title' => request('title'),
-                'link' => request('link')
+                'date' => request('date')
             ]);
 
             return response()->json([
-                'message' => 'Data video success updated',
-                'data' => $video_id 
+                'message' => 'Data achievement success updated',
+                'data' => $achievement 
             ], 200);
-
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
@@ -105,15 +103,15 @@ class VideoController extends Controller
         }
     }
 
-    public function delete_video($id)
+    public function delete($id)
     {
-        $video_id = Video::where('id', '=', $id)->first();
+        $achievement = Achievement::where('id', $id)->first();
 
-        $video_id->delete();
+        $achievement->delete();
 
         return response()->json([
             'success' => true,
-            'message' => 'Data video success deleted',
+            'message' => 'Data achievement success deleted',
         ]);
     }
 }

@@ -2,20 +2,20 @@
 
 namespace Database\Seeders;
 
+use App\Models\Certificate;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class RevenueSeeder extends Seeder
+class CertificateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('revenues')->insert([
-            'nominal' =>  9999,
-            'date' => '2024-02-27',
+        Certificate::create([
+            'id' => 1,
+            'file' => 'certfificates/tes123.jpg'
         ]);
     }
 }

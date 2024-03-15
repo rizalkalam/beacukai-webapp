@@ -2,13 +2,19 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Client\SopController;
 use App\Http\Controllers\Client\BerandaController;
 use App\Http\Controllers\Dashboard\AuthController;
+use App\Http\Controllers\Client\PrestasiController;
+use App\Http\Controllers\Client\PeraturanCukaiController;
 use App\Http\Controllers\Dashboard\Beranda\PhotoController;
 use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
 use App\Http\Controllers\Dashboard\Beranda\RevenueController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
+use App\Http\Controllers\Client\PeraturanKepabeananController;
+use App\Http\Controllers\Dashboard\Profile\AchievementController;
+use App\Http\Controllers\Dashboard\Profile\CertificateController;
 use App\Http\Controllers\Dashboard\Profile\SopCategoryController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiRegulationController;
@@ -90,6 +96,17 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/sop', [SopCategoryController::class, 'create']);
         Route::post('/sop/{id}', [SopCategoryController::class, 'update']);
         Route::delete('/sop/{id}', [SopCategoryController::class, 'delete']);
+
+        // achievement
+        Route::get('/achievement', [AchievementController::class, 'getAchievement']);
+        Route::get('/achievement/{id}', [AchievementController::class, 'getAchievementById']);
+        Route::post('/achievement', [AchievementController::class, 'create']);
+        Route::post('/achievement/{id}', [AchievementController::class, 'edit']);
+        Route::delete('/achievement/{id}', [AchievementController::class, 'delete']);
+        // certificate
+        Route::get('/certificate', [CertificateController::class, 'index']);
+        Route::post('/certificate', [CertificateController::class, 'store']);
+        Route::delete('/certificate/{id}', [CertificateController::class, 'delete_certificate']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -100,3 +117,17 @@ Route::get('/banners', [BerandaController::class, 'banners']);
 Route::get('/videos', [BerandaController::class, 'videos']);
 Route::get('/photos', [BerandaController::class, 'photos']);
 Route::get('/revenue', [BerandaController::class, 'revenue']);
+
+// peraturan cukai
+Route::get('/peraturan/cukai', [PeraturanCukaiController::class, 'regulation']);
+Route::get('/cukai/{id}', [PeraturanCukaiController::class, 'contentByRegulation']);
+// peraturan kepabeanan
+Route::get('/peraturan/kepabeanan', [PeraturanKepabeananController::class, 'regulation']);
+Route::get('/kepabeanan/{id}', [PeraturanKepabeananController::class, 'contentByRegulation']);
+
+// SOP
+Route::get('/sop', [SopController::class, 'index']);
+
+// prestasi dan apresiasi
+Route::get('/achievements', [PrestasiController::class, 'achievement']);
+Route::get('/certificates', [PrestasiController::class, 'certificate']);

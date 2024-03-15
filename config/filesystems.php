@@ -75,6 +75,7 @@ return [
         public_path('photos') => storage_path('app/photos'),
         public_path('file_cukai') => storage_path('app/file_cukai'),
         public_path('file_kepabeanan') => storage_path('app/file_kepabeanan'),
+        public_path('certificates') => storage_path('app/certificates'),
     ],
 
 ];

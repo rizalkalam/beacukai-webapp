@@ -17,10 +17,16 @@ class RevenueController extends Controller
         ])
         ->first();
 
+        // Memformat nominal sebelum menambahkannya ke respons JSON
+        $formattedNominal = number_format($data->nominal, 0, ',', '.');
+
         return response()->json([
             'success' => true,
             'message' => 'Data revenue',
-            'data' => $data,
+            'data' => [
+                'nominal' => $formattedNominal,
+                'date' => $data->date,
+            ],
         ]);
     }
 
@@ -43,8 +49,8 @@ class RevenueController extends Controller
             $revenue_id = Revenue::select('id')->first();
 
             $revenue_id->update([
-                'nominal' => $request->nominal,
-                'date' => $request->date
+                'nominal' => request('nominal'),
+                'date' => request('date')
             ]);
 
             return response()->json([

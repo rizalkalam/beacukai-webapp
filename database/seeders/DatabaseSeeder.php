@@ -11,6 +11,8 @@ use Database\Seeders\VideoSeeder;
 use Database\Seeders\BannerSeeder;
 use Database\Seeders\RevenueSeeder;
 use Database\Seeders\KepabeananSeeder;
+use Database\Seeders\AchievementSeeder;
+use Database\Seeders\CertificateSeeder;
 use Database\Seeders\SopCategorySeeder;
 use Database\Seeders\CukaiRegulationSeeder;
 use Database\Seeders\KepabeananRegulationSeeder;
@@ -40,6 +42,8 @@ class DatabaseSeeder extends Seeder
             KepabeananSeeder::class,
             KepabeananRegulationSeeder::class,
             SopCategorySeeder::class,
+            AchievementSeeder::class,
+            CertificateSeeder::class,
         ]);
     }
 }
