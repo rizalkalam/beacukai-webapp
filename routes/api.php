@@ -7,12 +7,14 @@ use App\Http\Controllers\Client\BerandaController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Client\PrestasiController;
 use App\Http\Controllers\Client\PeraturanCukaiController;
+use App\Http\Controllers\Dashboard\Beranda\FaqController;
 use App\Http\Controllers\Dashboard\Beranda\PhotoController;
 use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
 use App\Http\Controllers\Dashboard\Beranda\RevenueController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
 use App\Http\Controllers\Client\PeraturanKepabeananController;
+use App\Http\Controllers\Dashboard\Beranda\FaqCategoryController;
 use App\Http\Controllers\Dashboard\Profile\AchievementController;
 use App\Http\Controllers\Dashboard\Profile\CertificateController;
 use App\Http\Controllers\Dashboard\Profile\SopCategoryController;
@@ -62,6 +64,23 @@ Route::middleware('auth:sanctum')->group(function () {
         // revenue
         Route::get('/revenue', [RevenueController::class, 'index']);
         Route::post('/revenue/change', [RevenueController::class, 'change']);
+
+        // category
+        Route::group(['prefix'=>'category'], function(){
+            //faq category
+            Route::get('/faq', [FaqCategoryController::class, 'getFaqCategory']);
+            Route::get('/faq/{id}', [FaqCategoryController::class, 'getFaqCategoryById']);
+            Route::post('/faq', [FaqCategoryController::class, 'create']);
+            Route::post('/faq/{id}', [FaqCategoryController::class, 'update']);
+            Route::delete('/faq/{id}', [FaqCategoryController::class, 'delete']);
+        });
+
+        // faq content
+        Route::get('/faq/category/{category_id}', [FaqController::class, 'getByCategoryId']);
+        Route::get('/faq/{id}', [FaqController::class, 'getFaqContentById']);
+        Route::post('/faq', [FaqController::class, 'create']);
+        Route::post('/faq/{id}', [FaqController::class, 'update']);
+        Route::delete('/faq/{id}', [FaqController::class, 'delete']);
 
         //regulation
         Route::group(['prefix'=>'regulation'], function(){

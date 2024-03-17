@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\FaqSeeder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CukaiSeeder;
@@ -44,6 +45,7 @@ class DatabaseSeeder extends Seeder
             SopCategorySeeder::class,
             AchievementSeeder::class,
             CertificateSeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }
