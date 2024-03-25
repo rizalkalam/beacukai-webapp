@@ -6,19 +6,23 @@ use App\Http\Controllers\Client\SopController;
 use App\Http\Controllers\Client\BerandaController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Client\PrestasiController;
+use App\Http\Controllers\Client\PenggunaJasaController;
 use App\Http\Controllers\Client\PeraturanCukaiController;
 use App\Http\Controllers\Dashboard\Beranda\FaqController;
 use App\Http\Controllers\Dashboard\Beranda\PhotoController;
 use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
 use App\Http\Controllers\Dashboard\Beranda\RevenueController;
+use App\Http\Controllers\Dashboard\Beranda\ServiceController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
 use App\Http\Controllers\Client\PeraturanKepabeananController;
 use App\Http\Controllers\Dashboard\Beranda\FaqCategoryController;
 use App\Http\Controllers\Dashboard\Profile\AchievementController;
 use App\Http\Controllers\Dashboard\Profile\CertificateController;
 use App\Http\Controllers\Dashboard\Profile\SopCategoryController;
+use App\Http\Controllers\Dashboard\Profile\WorkingAreaController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananController;
+use App\Http\Controllers\Dashboard\Profile\UserSatisfactionController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiRegulationController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananRegulationController;
 
@@ -76,7 +80,7 @@ Route::middleware('auth:sanctum')->group(function () {
         });
 
         // faq content
-        Route::get('/faq/category/{category_id}', [FaqController::class, 'getByCategoryId']);
+        Route::get('/faq', [FaqController::class, 'getByCategoryName']);
         Route::get('/faq/{id}', [FaqController::class, 'getFaqContentById']);
         Route::post('/faq', [FaqController::class, 'create']);
         Route::post('/faq/{id}', [FaqController::class, 'update']);
@@ -100,14 +104,20 @@ Route::middleware('auth:sanctum')->group(function () {
         });
 
         // cukai
-        Route::get('/cukai/{id}', [CukaiController::class, 'getByRegulationId']);
+        Route::get('/cukai', [CukaiController::class, 'getByRegulationId']);
         Route::post('/cukai', [CukaiController::class, 'store']);
         Route::delete('/cukai/{id}', [CukaiController::class, 'delete']);
 
         // kepabeanan
-        Route::get('/kepabeanan/{id}', [KepabeananController::class, 'getByRegulationId']);
+        Route::get('/kepabeanan', [KepabeananController::class, 'getByRegulationId']);
         Route::post('/kepabeanan', [KepabeananController::class, 'store']);
         Route::delete('/kepabeanan/{id}', [KepabeananController::class, 'delete']);
+
+        // wilayah kerja
+        Route::get('/workingarea', [WorkingAreaController::class, 'getServiceUser']);
+        Route::post('/workingarea/tobacco', [WorkingAreaController::class, 'changeTobacco']);
+        Route::post('/workingarea/tpemmeaea', [WorkingAreaController::class, 'changeTpeMmeaEa']);
+        Route::post('/workingarea/bondedstorageplace', [WorkingAreaController::class, 'changeBondedStoragePlace']);
 
         // sop
         Route::get('/sop', [SopCategoryController::class, 'index']);
@@ -115,6 +125,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/sop', [SopCategoryController::class, 'create']);
         Route::post('/sop/{id}', [SopCategoryController::class, 'update']);
         Route::delete('/sop/{id}', [SopCategoryController::class, 'delete']);
+
+        // kepuasan pengguna
+        Route::get('/satisfaction', [UserSatisfactionController::class, 'getUserSatisfaction']);
+        Route::get('/satisfaction/{id}', [UserSatisfactionController::class, 'getUserSatisfactionById']);
 
         // achievement
         Route::get('/achievement', [AchievementController::class, 'getAchievement']);
@@ -126,6 +140,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/certificate', [CertificateController::class, 'index']);
         Route::post('/certificate', [CertificateController::class, 'store']);
         Route::delete('/certificate/{id}', [CertificateController::class, 'delete_certificate']);
+
+        // service
+        Route::get('/service', [ServiceController::class, 'getService']);
+        Route::get('/service/{id}', [ServiceController::class, 'getServiceById']);
+        Route::post('/service', [ServiceController::class, 'create']);
+        Route::post('/service/{id}', [ServiceController::class, 'update']);
+        Route::delete('/service/{id}', [ServiceController::class, 'delete']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -139,10 +160,10 @@ Route::get('/revenue', [BerandaController::class, 'revenue']);
 
 // peraturan cukai
 Route::get('/peraturan/cukai', [PeraturanCukaiController::class, 'regulation']);
-Route::get('/cukai/{id}', [PeraturanCukaiController::class, 'contentByRegulation']);
+Route::get('/cukai', [PeraturanCukaiController::class, 'contentByRegulation']);
 // peraturan kepabeanan
 Route::get('/peraturan/kepabeanan', [PeraturanKepabeananController::class, 'regulation']);
-Route::get('/kepabeanan/{id}', [PeraturanKepabeananController::class, 'contentByRegulation']);
+Route::get('/kepabeanan', [PeraturanKepabeananController::class, 'contentByRegulation']);
 
 // SOP
 Route::get('/sop', [SopController::class, 'index']);
@@ -150,3 +171,6 @@ Route::get('/sop', [SopController::class, 'index']);
 // prestasi dan apresiasi
 Route::get('/achievements', [PrestasiController::class, 'achievement']);
 Route::get('/certificates', [PrestasiController::class, 'certificate']);
+
+// wilayah kerja
+Route::get('/workingarea', [PenggunaJasaController::class, 'getWorkingArea']);

@@ -5,24 +5,43 @@ namespace App\Http\Controllers\Dashboard\Peraturan;
 use App\Models\Kepabeanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\KepabeananRegulation;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class KepabeananController extends Controller
 {
-    public function getByRegulationId($id)
+    public function getByRegulationId()
     {
+        // $data = Kepabeanan::join('kepabeanan_regulations', 'kepabeanan_regulations.id', '=', 'kepabeanans.regulation_id')
+        // ->where('regulation_id', $id)
+        // ->select([
+        //     'kepabeanans.title',
+        //     'kepabeanans.file'
+        // ])
+        // ->get();
+
+        $regulationName = request('regulation', null);
+
         $data = Kepabeanan::join('kepabeanan_regulations', 'kepabeanan_regulations.id', '=', 'kepabeanans.regulation_id')
-        ->where('regulation_id', $id)
+        ->when($regulationName, function ($query) use ($regulationName) {
+            return $query->whereHas('regulation', function ($query) use ($regulationName) {
+                $query->where('regulation_name', $regulationName);
+            });
+        })
         ->select([
+            'kepabeanans.id',
             'kepabeanans.title',
             'kepabeanans.file'
         ])
         ->get();
 
+        $dataRegulation = KepabeananRegulation::where('regulation_name', $regulationName)->first();
+
         return response()->json([
             "success" => true,
             "message" => "kepabeanan",
+            "name_regulation" => $dataRegulation->regulation_name,
             "data" => $data,
         ], 200);
     }

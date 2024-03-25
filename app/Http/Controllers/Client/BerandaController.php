@@ -7,6 +7,7 @@ use App\Models\Video;
 use App\Models\Banner;
 use App\Models\Revenue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 
 class BerandaController extends Controller
@@ -48,10 +49,18 @@ class BerandaController extends Controller
     {
         $data = Revenue::first();
 
+        setlocale(LC_TIME, 'id_ID');
+        \Carbon\Carbon::setLocale('id');
+
+        $data_formatout = ([
+            'nominal' => $data->nominal,
+            'date' => Carbon::parse($data->date)->isoFormat('D MMMM Y')
+        ]);
+
         return response()->json([
             "success" => true,
             "message" => "revenue",
-            "data" => $data,
+            "data" => $data_formatout,
         ], 200);
     }
 }

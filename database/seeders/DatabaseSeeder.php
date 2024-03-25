@@ -5,16 +5,20 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Seeders\FaqSeeder;
 use Illuminate\Database\Seeder;
+use App\Models\UserSatisfaction;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CukaiSeeder;
 use Database\Seeders\PhotoSeeder;
 use Database\Seeders\VideoSeeder;
 use Database\Seeders\BannerSeeder;
 use Database\Seeders\RevenueSeeder;
+use Database\Seeders\ServiceSeeder;
 use Database\Seeders\KepabeananSeeder;
 use Database\Seeders\AchievementSeeder;
 use Database\Seeders\CertificateSeeder;
+use Database\Seeders\ServiceUserSeeder;
 use Database\Seeders\SopCategorySeeder;
+use Database\Seeders\WorkingAreaSeeder;
 use Database\Seeders\CukaiRegulationSeeder;
 use Database\Seeders\KepabeananRegulationSeeder;
 
@@ -46,6 +50,9 @@ class DatabaseSeeder extends Seeder
             AchievementSeeder::class,
             CertificateSeeder::class,
             FaqSeeder::class,
+            WorkingAreaSeeder::class,
+            UserSatisfactionSeeder::class,
+            ServiceSeeder::class,
         ]);
     }
 }

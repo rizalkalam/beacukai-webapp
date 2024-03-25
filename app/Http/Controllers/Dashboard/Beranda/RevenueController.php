@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Beranda;
 
 use App\Models\Revenue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 

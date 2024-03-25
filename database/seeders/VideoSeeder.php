@@ -24,5 +24,29 @@ class VideoSeeder extends Seeder
             'title' => 'BELI PITA CUKAI | PODKESKU EPISODE 2 | PODCAST BEA CUKAI KUDUS',
             'link' => 'https://youtu.be/Lql3OrotWo0?si=Eh-Cks5VOcvWq9S7'
         ]);
+
+        Video::create([
+            'id' => 3,
+            'title' => 'INOVASI BEA CUKAI KUDUS DUKUNG EKSPOR | PODKESKU EPISODE 3 | PODCAST BEA CUKAI KUDUS',
+            'link' => 'https://youtu.be/uy0CSo1AeuM?si=3gUSSaZynIOh3OaL'
+        ]);
+
+        Video::create([
+            'id' => 4,
+            'title' => 'BELI PITA CUKAI | PODKESKU EPISODE 2 | PODCAST BEA CUKAI KUDUS',
+            'link' => 'https://youtu.be/Lql3OrotWo0?si=Eh-Cks5VOcvWq9S7'
+        ]);
+
+        Video::create([
+            'id' => 5,
+            'title' => 'INOVASI BEA CUKAI KUDUS DUKUNG EKSPOR | PODKESKU EPISODE 3 | PODCAST BEA CUKAI KUDUS',
+            'link' => 'https://youtu.be/uy0CSo1AeuM?si=3gUSSaZynIOh3OaL'
+        ]);
+
+        Video::create([
+            'id' => 6,
+            'title' => 'BELI PITA CUKAI | PODKESKU EPISODE 2 | PODCAST BEA CUKAI KUDUS',
+            'link' => 'https://youtu.be/Lql3OrotWo0?si=Eh-Cks5VOcvWq9S7'
+        ]);
     }
 }

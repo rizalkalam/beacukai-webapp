@@ -15,17 +15,17 @@ class BannerSeeder extends Seeder
     {
         Banner::create([
             'id' => 1,
-            'file' => 'banners/banner1.png'
+            'file' => 'banners/banner1.jpg'
         ]);
 
         Banner::create([
             'id' => 2,
-            'file' => 'banners/banner2.png'
+            'file' => 'banners/banner2.jpg'
         ]);
 
         Banner::create([
             'id' => 3,
-            'file' => 'banners/banner3.png'
+            'file' => 'banners/banner3.jpg'
         ]);
     }
 }

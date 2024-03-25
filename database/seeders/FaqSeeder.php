@@ -63,6 +63,27 @@ class FaqSeeder extends Seeder
                 'description' => 'Undang-undang Republik Indonesia Nomor 11 Tahun 1995 tentang Cukai sebagai mana telah diubah dengan Undang-undang Republik Indonesia Nomor 39 Tahun 2007 tentang Perubahan atas Undang-undang Republik Indonesia Nomor 11 Tahun 1995 tentang Cukai',
                 'category_id' => 1,
             ],
+
+            [
+                'id' => 5,
+                'title' => 'tes',
+                'description' => 'tes123',
+                'category_id' => 2,
+            ],
+
+            [
+                'id' => 6,
+                'title' => 'tes',
+                'description' => 'tes123',
+                'category_id' => 3,
+            ],
+
+            [
+                'id' => 7,
+                'title' => 'tes',
+                'description' => 'tes123',
+                'category_id' => 4,
+            ],
         ];
 
         DB::table('faq_categories')->insert($data_faqCategory);

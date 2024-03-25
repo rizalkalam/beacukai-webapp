@@ -2,20 +2,22 @@
 
 namespace Database\Seeders;
 
+use App\Models\WorkingArea;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class RevenueSeeder extends Seeder
+class WorkingAreaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('revenues')->insert([
-            'nominal' =>  122000000000,
-            'date' => '2024-02-27',
+        WorkingArea::create([
+            'id' => 1,
+            'tobacco' => 90,
+            'tpe_mmea_ea' => 13,
+            'bonded_storage_place' => 14
         ]);
     }
 }

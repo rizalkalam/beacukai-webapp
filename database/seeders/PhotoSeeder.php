@@ -15,7 +15,47 @@ class PhotoSeeder extends Seeder
     {
         Photo::create([
             'id' => 1,
-            'file' => 'photos/card-yt.png'
+            'file' => 'photos/poto1.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 2,
+            'file' => 'photos/poto2.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 3,
+            'file' => 'photos/poto3.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 4,
+            'file' => 'photos/poto4.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 5,
+            'file' => 'photos/poto5.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 6,
+            'file' => 'photos/poto6.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 7,
+            'file' => 'photos/poto7.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 8,
+            'file' => 'photos/poto8.jpg'
+        ]);
+
+        Photo::create([
+            'id' => 9,
+            'file' => 'photos/poto9.jpg'
         ]);
     }
 }

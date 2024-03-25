@@ -5,24 +5,43 @@ namespace App\Http\Controllers\Dashboard\Peraturan;
 use App\Models\Cukai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\CukaiRegulation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class CukaiController extends Controller
 {
-    public function getByRegulationId($id)
+    public function getByRegulationId()
     {
+        // $data = Cukai::join('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')
+        // ->where('regulation_id', $id)
+        // ->select([
+        //     'cukais.title',
+        //     'cukais.file'
+        // ])
+        // ->get();
+
+        $regulationName = request('regulation', null);
+
         $data = Cukai::join('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')
-        ->where('regulation_id', $id)
+        ->when($regulationName, function ($query) use ($regulationName) {
+            return $query->whereHas('regulation', function ($query) use ($regulationName) {
+                $query->where('regulation_name', $regulationName);
+            });
+        })
         ->select([
-            'cukais.title',
-            'cukais.file'
+                'cukais.id',
+                'cukais.title',
+                'cukais.file'
         ])
         ->get();
+
+        $dataRegulation = CukaiRegulation::where('regulation_name', $regulationName)->first();
 
         return response()->json([
             "success" => true,
             "message" => "cukai",
+            "name_regulation" => $dataRegulation->regulation_name,
             "data" => $data,
         ], 200);
     }
