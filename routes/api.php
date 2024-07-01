@@ -6,12 +6,14 @@ use App\Http\Controllers\Client\SopController;
 use App\Http\Controllers\Client\BerandaController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Client\PrestasiController;
+use App\Http\Controllers\Client\FaqClientController;
 use App\Http\Controllers\Client\PenggunaJasaController;
 use App\Http\Controllers\Client\PeraturanCukaiController;
 use App\Http\Controllers\Dashboard\Beranda\FaqController;
 use App\Http\Controllers\Dashboard\Beranda\PhotoController;
 use App\Http\Controllers\Dashboard\Beranda\VideoController;
 use App\Http\Controllers\Dashboard\Beranda\BannerController;
+use App\Http\Controllers\Client\JanjiLayananClientController;
 use App\Http\Controllers\Dashboard\Beranda\RevenueController;
 use App\Http\Controllers\Dashboard\Beranda\ServiceController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
@@ -24,6 +26,7 @@ use App\Http\Controllers\Dashboard\Profile\WorkingAreaController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananController;
 use App\Http\Controllers\Dashboard\Profile\UserSatisfactionController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiRegulationController;
+use App\Http\Controllers\Dashboard\JanjiLayanan\ServicePromiseController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananRegulationController;
 
 /*
@@ -147,6 +150,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/service', [ServiceController::class, 'create']);
         Route::post('/service/{id}', [ServiceController::class, 'update']);
         Route::delete('/service/{id}', [ServiceController::class, 'delete']);
+
+        // service promise
+        Route::get('/servicepromise', [ServicePromiseController::class, 'getServicePromise']);
+        Route::get('/servicepromise/{id}', [ServicePromiseController::class, 'getServicePromiseById']);
+        Route::post('/servicepromise', [ServicePromiseController::class, 'create']);
+        Route::post('/servicepromise/{id}', [ServicePromiseController::class, 'update']);
+        Route::delete('/servicepromise/{id}', [ServicePromiseController::class, 'delete']);
+
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -157,6 +168,9 @@ Route::get('/banners', [BerandaController::class, 'banners']);
 Route::get('/videos', [BerandaController::class, 'videos']);
 Route::get('/photos', [BerandaController::class, 'photos']);
 Route::get('/revenue', [BerandaController::class, 'revenue']);
+
+// faq
+Route::get('/faq', [FaqClientController::class, 'getFaq']);
 
 // peraturan cukai
 Route::get('/peraturan/cukai', [PeraturanCukaiController::class, 'regulation']);
@@ -174,3 +188,6 @@ Route::get('/certificates', [PrestasiController::class, 'certificate']);
 
 // wilayah kerja
 Route::get('/workingarea', [PenggunaJasaController::class, 'getWorkingArea']);
+
+// janji layanan
+Route::get('/servicepromise', [JanjiLayananClientController::class, 'getServicePromise']);

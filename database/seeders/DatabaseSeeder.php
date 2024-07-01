@@ -19,6 +19,7 @@ use Database\Seeders\CertificateSeeder;
 use Database\Seeders\ServiceUserSeeder;
 use Database\Seeders\SopCategorySeeder;
 use Database\Seeders\WorkingAreaSeeder;
+use Database\Seeders\ServicePromiseSeeder;
 use Database\Seeders\CukaiRegulationSeeder;
 use Database\Seeders\KepabeananRegulationSeeder;
 
@@ -53,6 +54,7 @@ class DatabaseSeeder extends Seeder
             WorkingAreaSeeder::class,
             UserSatisfactionSeeder::class,
             ServiceSeeder::class,
+            ServicePromiseSeeder::class,
         ]);
     }
 }
