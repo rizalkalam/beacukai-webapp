@@ -12,7 +12,15 @@ class UserSatisfactionController extends Controller
 {
     public function getUserSatisfaction()
     {
-        $data = UserSatisfaction::get();
+        $satisfactions = UserSatisfaction::all();
+
+        $data = $satisfactions->map(function($satisfaction) {
+            return [
+                'year' => $satisfaction->date->format('Y'), // Menyimpan tahun saja
+                'date' => $satisfaction->date->format('Y-m-d'), // Menyimpan tanggal lengkap
+                'precentage' => $satisfaction->value
+            ];
+        });
 
         return response()->json([
             "success" => true,
@@ -23,7 +31,13 @@ class UserSatisfactionController extends Controller
 
     public function getUserSatisfactionById($id)
     {
-        $data = UserSatisfaction::where('id', $id)->first();
+        $satisfaction = UserSatisfaction::where('id', $id)->first();
+
+        $data = [
+            'year' => $satisfaction->date->format('Y'), // Menyimpan tahun saja
+            'date' => $satisfaction->date->format('Y-m-d'), // Menyimpan tanggal lengkap
+            'precentage' => $satisfaction->value
+        ];
 
         return response()->json([
             "success" => true,
@@ -97,7 +111,7 @@ class UserSatisfactionController extends Controller
         try {
             $data = UserSatisfaction::where('id', $id)
             ->first();
-            
+
             // Mendapatkan tahun dari tanggal yang diberikan
             $givenDate = Carbon::parse($request->input('date'));
             $givenYear = $givenDate->year;

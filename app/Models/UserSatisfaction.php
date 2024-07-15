@@ -9,5 +9,9 @@ class UserSatisfaction extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = ['date', 'value'];
+    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 }
