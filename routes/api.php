@@ -132,6 +132,9 @@ Route::middleware('auth:sanctum')->group(function () {
         // kepuasan pengguna
         Route::get('/satisfaction', [UserSatisfactionController::class, 'getUserSatisfaction']);
         Route::get('/satisfaction/{id}', [UserSatisfactionController::class, 'getUserSatisfactionById']);
+        Route::post('/satisfaction', [UserSatisfactionController::class, 'create']);
+        Route::post('/satisfaction/{id}', [UserSatisfactionController::class, 'update']);
+        Route::delete('/satisfaction/{id}', [UserSatisfactionController::class, 'delete']);
 
         // achievement
         Route::get('/achievement', [AchievementController::class, 'getAchievement']);
