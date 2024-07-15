@@ -16,6 +16,7 @@ class UserSatisfactionController extends Controller
 
         $data = $satisfactions->map(function($satisfaction) {
             return [
+                'id' => $satisfaction->id,
                 'year' => $satisfaction->date->format('Y'), // Menyimpan tahun saja
                 'date' => $satisfaction->date->format('Y-m-d'), // Menyimpan tanggal lengkap
                 'precentage' => $satisfaction->value
@@ -34,6 +35,7 @@ class UserSatisfactionController extends Controller
         $satisfaction = UserSatisfaction::where('id', $id)->first();
 
         $data = [
+            'id' => $satisfaction->id,
             'year' => $satisfaction->date->format('Y'), // Menyimpan tahun saja
             'date' => $satisfaction->date->format('Y-m-d'), // Menyimpan tanggal lengkap
             'precentage' => $satisfaction->value
