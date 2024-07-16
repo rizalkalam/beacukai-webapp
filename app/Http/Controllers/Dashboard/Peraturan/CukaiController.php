@@ -30,6 +30,7 @@ class CukaiController extends Controller
             });
         })
         ->select([
+                'cukai_regulations.id as regulation_id',
                 'cukais.id',
                 'cukais.title',
                 'cukais.file'

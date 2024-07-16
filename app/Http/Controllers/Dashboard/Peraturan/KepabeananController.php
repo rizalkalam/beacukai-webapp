@@ -30,6 +30,7 @@ class KepabeananController extends Controller
             });
         })
         ->select([
+            'kepabeanan_regulations.id as regulation_id',
             'kepabeanans.id',
             'kepabeanans.title',
             'kepabeanans.file'
