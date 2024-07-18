@@ -68,7 +68,7 @@ class KepabeananController extends Controller
             $file->storeAs('file_kepabeanan', $file_name);
 
             $data = Kepabeanan::create([
-                'title' => $file_name,
+                'title' => request('title'),
                 'file' => 'file_kepabeanan/' . $file_name,
                 'regulation_id' => request('regulation_id'),
             ]);
