@@ -39,7 +39,14 @@ class CukaiSeeder extends Seeder
                 'id' => 4,
                 'title' => 'tes123.pdf',
                 'file' => 'file_cukai/cobates.pdf',
-                'regulation_id' => 3
+                'regulation_id' => 4
+            ],
+
+            [
+                'id' => 5,
+                'title' => 'tes123.pdf',
+                'file' => 'file_cukai/cobates.pdf',
+                'regulation_id' => 5
             ],
         ];
 
