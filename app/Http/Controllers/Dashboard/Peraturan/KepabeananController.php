@@ -37,6 +37,13 @@ class KepabeananController extends Controller
         ])
         ->get();
 
+        if ($data->isEmpty()) {
+            return response()->json([
+                "success" => false,
+                "message" => "Data file kepabeanan is empty",
+            ], 200);
+        }
+
         $dataRegulation = KepabeananRegulation::where('regulation_name', $regulationName)->first();
 
         return response()->json([

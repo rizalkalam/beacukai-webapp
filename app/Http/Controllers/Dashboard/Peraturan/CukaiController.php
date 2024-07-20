@@ -24,7 +24,7 @@ class CukaiController extends Controller
 
         $regulationName = request('regulation', null);
 
-        $data = Cukai::join('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')
+        $data = Cukai::leftjoin('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')
         ->when($regulationName, function ($query) use ($regulationName) {
             return $query->whereHas('regulation', function ($query) use ($regulationName) {
                 $query->where('regulation_name', $regulationName);
@@ -37,6 +37,13 @@ class CukaiController extends Controller
                 'cukais.file'
         ])
         ->get();
+
+        if ($data->isEmpty()) {
+            return response()->json([
+                "success" => false,
+                "message" => "Data file cukai is empty",
+            ], 200);
+        }
 
         $dataRegulation = CukaiRegulation::where('regulation_name', $regulationName)->first();
 
