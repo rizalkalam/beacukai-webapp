@@ -59,9 +59,9 @@ class KepabeananController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'file' => 'required',
+            'file' => 'required|mimes:pdf',
             'regulation_id' => 'required'
-            // 'file' => 'required|mimes:pdf',
+            // 'file' => 'required',
         ]);
 
         if ($validator->fails()) {
