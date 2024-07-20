@@ -41,6 +41,7 @@ class KepabeananController extends Controller
             return response()->json([
                 "success" => false,
                 "message" => "Data file kepabeanan is empty",
+                "data" => []
             ], 200);
         }
 
