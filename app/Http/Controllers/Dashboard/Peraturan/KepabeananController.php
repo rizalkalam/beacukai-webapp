@@ -51,8 +51,10 @@ class KepabeananController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'file' => 'required|mimes:pdf',
+            'title' => 'required',
+            'file' => 'required',
             'regulation_id' => 'required'
+            // 'file' => 'required|mimes:pdf',
         ]);
 
         if ($validator->fails()) {
