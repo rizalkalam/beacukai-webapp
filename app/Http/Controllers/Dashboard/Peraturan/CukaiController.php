@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\CukaiRegulation;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CukaiController extends Controller
@@ -43,6 +44,7 @@ class CukaiController extends Controller
             "success" => true,
             "message" => "cukai",
             "name_regulation" => $dataRegulation->regulation_name,
+            "regulation_id" => $data->first()->regulation_id,
             "data" => $data,
         ], 200);
     }
@@ -88,13 +90,20 @@ class CukaiController extends Controller
 
     public function delete($id)
     {
-        // hapus file
         $file = Cukai::where('id', $id)->value('file');
-        Storage::delete($file);
 
-        // hapus data
-        $cukai = Cukai::where('id', $id)->first();
-        $cukai->delete();
+        if (Storage::exists($file)) {
+            // hapus file
+            Storage::delete($file);
+
+            // hapus data
+            $cukai = Cukai::where('id', $id)->first();
+            $cukai->delete();
+        } else {
+            // hapus data
+            $cukai = Cukai::where('id', $id)->first();
+            $cukai->delete();
+        }
 
         return response()->json([
             'success' => true,

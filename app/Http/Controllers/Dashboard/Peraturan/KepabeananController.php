@@ -43,6 +43,7 @@ class KepabeananController extends Controller
             "success" => true,
             "message" => "kepabeanan",
             "name_regulation" => $dataRegulation->regulation_name,
+            "regulation_id" => $data->first()->regulation_id,
             "data" => $data,
         ], 200);
     }
@@ -88,13 +89,20 @@ class KepabeananController extends Controller
 
     public function delete($id)
     {
-        // hapus file
         $file = Kepabeanan::where('id', $id)->value('file');
-        Storage::delete($file);
 
-        // hapus data
-        $kepabeanan = Kepabeanan::where('id', $id)->first();
-        $kepabeanan->delete();
+        if (Storage::exists($file)) {
+            // hapus file
+            Storage::delete($file);
+
+            // hapus data
+            $kepabeanan = Kepabeanan::where('id', $id)->first();
+            $kepabeanan->delete();
+        } else {
+            // hapus data
+            $kepabeanan = Kepabeanan::where('id', $id)->first();
+            $kepabeanan->delete();
+        }
 
         return response()->json([
             'success' => true,
