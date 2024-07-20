@@ -42,6 +42,7 @@ class CukaiController extends Controller
             return response()->json([
                 "success" => false,
                 "message" => "Data file cukai is empty",
+                "data" => []
             ], 200);
         }
 
