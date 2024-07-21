@@ -81,7 +81,7 @@ class CukaiController extends Controller
 
             $data = Cukai::create([
                 'title' => request('title'),
-                'file' => 'file_kepabeanan/' . $file_name,
+                'file' => 'file_cukai/' . $file_name,
                 'regulation_id' => request('regulation_id'),
             ]);
 
