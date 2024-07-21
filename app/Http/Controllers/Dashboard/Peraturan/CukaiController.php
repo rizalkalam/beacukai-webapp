@@ -39,9 +39,11 @@ class CukaiController extends Controller
         ->get();
 
         if ($data->isEmpty()) {
+            $regulationId = CukaiRegulation::where('regulation_name', $regulationName)->value('id');
             return response()->json([
                 "success" => false,
                 "message" => "Data file cukai is empty",
+                "regulation_id" => $regulationId,
                 "data" => []
             ], 200);
         }

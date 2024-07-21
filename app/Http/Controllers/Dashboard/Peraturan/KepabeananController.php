@@ -38,9 +38,11 @@ class KepabeananController extends Controller
         ->get();
 
         if ($data->isEmpty()) {
+            $regulationId = KepabeananRegulation::where('regulation_name', $regulationName)->value('id');
             return response()->json([
                 "success" => false,
                 "message" => "Data file kepabeanan is empty",
+                "regulation_id" => $regulationId,
                 "data" => []
             ], 200);
         }
