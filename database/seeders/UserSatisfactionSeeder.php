@@ -29,7 +29,7 @@ class UserSatisfactionSeeder extends Seeder
         ]);
 
         UserSatisfaction::create([
-            'date' => '2017-02-07',
+            'date' => '2011-02-07',
             'value' => 4.41,
         ]);
 

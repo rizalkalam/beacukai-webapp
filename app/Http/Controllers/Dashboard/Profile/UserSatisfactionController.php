@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\UserSatisfaction;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,7 +13,7 @@ class UserSatisfactionController extends Controller
 {
     public function getUserSatisfaction()
     {
-        $satisfactions = UserSatisfaction::all();
+        $satisfactions = UserSatisfaction::orderBy(DB::raw('YEAR(date)'), 'asc')->get();
 
         $data = $satisfactions->map(function($satisfaction) {
             return [
