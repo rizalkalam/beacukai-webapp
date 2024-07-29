@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\SopController;
 use App\Http\Controllers\Client\BerandaController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Client\PrestasiController;
+use App\Http\Controllers\Client\StrukturController;
 use App\Http\Controllers\Client\FaqClientController;
 use App\Http\Controllers\Client\PenggunaJasaController;
 use App\Http\Controllers\Client\IndeksKepuasanController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\Dashboard\Profile\UserSatisfactionController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiRegulationController;
 use App\Http\Controllers\Dashboard\JanjiLayanan\ServicePromiseController;
 use App\Http\Controllers\Dashboard\Peraturan\KepabeananRegulationController;
+use App\Http\Controllers\Dashboard\Profile\OrganizationalStructureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -162,6 +164,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/servicepromise/{id}', [ServicePromiseController::class, 'update']);
         Route::delete('/servicepromise/{id}', [ServicePromiseController::class, 'delete']);
 
+        // organizational sturcture
+        Route::get('/organizational', [OrganizationalStructureController::class, 'getOrganizationImage']);
+        Route::post('/organizational', [OrganizationalStructureController::class, 'store_image']);
+        Route::delete('/organizational/{id}', [OrganizationalStructureController::class, 'delete_image']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -198,3 +204,6 @@ Route::get('/servicepromise', [JanjiLayananClientController::class, 'getServiceP
 
 // index kepuasan
 Route::get('/satisfaction', [IndeksKepuasanController::class, 'index']);
+
+// struktur organisasi
+Route::get('/struktur', [StrukturController::class, 'index']);

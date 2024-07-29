@@ -22,6 +22,7 @@ use Database\Seeders\WorkingAreaSeeder;
 use Database\Seeders\ServicePromiseSeeder;
 use Database\Seeders\CukaiRegulationSeeder;
 use Database\Seeders\KepabeananRegulationSeeder;
+use Database\Seeders\OrganizationalStructureSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -55,6 +56,7 @@ class DatabaseSeeder extends Seeder
             UserSatisfactionSeeder::class,
             ServiceSeeder::class,
             ServicePromiseSeeder::class,
+            OrganizationalStructureSeeder::class,
         ]);
     }
 }
