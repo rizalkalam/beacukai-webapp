@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\SopController;
 use App\Http\Controllers\Client\BerandaController;
+use App\Http\Controllers\Client\LayananController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Client\PrestasiController;
 use App\Http\Controllers\Client\StrukturController;
@@ -207,3 +208,6 @@ Route::get('/satisfaction', [IndeksKepuasanController::class, 'index']);
 
 // struktur organisasi
 Route::get('/struktur', [StrukturController::class, 'index']);
+
+// layanan
+Route::get('layanan', [LayananController::class, 'index']);
