@@ -210,4 +210,4 @@ Route::get('/satisfaction', [IndeksKepuasanController::class, 'index']);
 Route::get('/struktur', [StrukturController::class, 'index']);
 
 // layanan
-Route::get('layanan', [LayananController::class, 'index']);
+Route::get('/service', [LayananController::class, 'index']);
