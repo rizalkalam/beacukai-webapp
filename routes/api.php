@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Client\PrestasiController;
 use App\Http\Controllers\Client\FaqClientController;
 use App\Http\Controllers\Client\PenggunaJasaController;
+use App\Http\Controllers\Client\IndeksKepuasanController;
 use App\Http\Controllers\Client\PeraturanCukaiController;
 use App\Http\Controllers\Dashboard\Beranda\FaqController;
 use App\Http\Controllers\Dashboard\Beranda\PhotoController;
@@ -194,3 +195,6 @@ Route::get('/workingarea', [PenggunaJasaController::class, 'getWorkingArea']);
 
 // janji layanan
 Route::get('/servicepromise', [JanjiLayananClientController::class, 'getServicePromise']);
+
+// index kepuasan
+Route::get('/satisfaction', [IndeksKepuasanController::class, 'index']);
