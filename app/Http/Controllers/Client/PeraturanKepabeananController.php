@@ -23,7 +23,7 @@ class PeraturanKepabeananController extends Controller
         ], 200);
     }
 
-    public function contentByRegulation($id)
+    public function contentByRegulation()
     {
         $regulationName = request('regulation', null);
 
