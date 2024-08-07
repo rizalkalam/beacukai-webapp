@@ -13,14 +13,6 @@ class KepabeananController extends Controller
 {
     public function getByRegulationId()
     {
-        // $data = Kepabeanan::join('kepabeanan_regulations', 'kepabeanan_regulations.id', '=', 'kepabeanans.regulation_id')
-        // ->where('regulation_id', $id)
-        // ->select([
-        //     'kepabeanans.title',
-        //     'kepabeanans.file'
-        // ])
-        // ->get();
-
         $regulationName = request('regulation', null);
 
         $data = Kepabeanan::join('kepabeanan_regulations', 'kepabeanan_regulations.id', '=', 'kepabeanans.regulation_id')

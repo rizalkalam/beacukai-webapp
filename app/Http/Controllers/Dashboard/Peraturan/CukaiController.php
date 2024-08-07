@@ -14,14 +14,6 @@ class CukaiController extends Controller
 {
     public function getByRegulationId()
     {
-        // $data = Cukai::join('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')
-        // ->where('regulation_id', $id)
-        // ->select([
-        //     'cukais.title',
-        //     'cukais.file'
-        // ])
-        // ->get();
-
         $regulationName = request('regulation', null);
 
         $data = Cukai::leftjoin('cukai_regulations', 'cukai_regulations.id', '=', 'cukais.regulation_id')

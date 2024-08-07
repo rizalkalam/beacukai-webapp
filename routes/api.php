@@ -22,6 +22,7 @@ use App\Http\Controllers\Dashboard\Beranda\ServiceController;
 use App\Http\Controllers\Dashboard\Peraturan\CukaiController;
 use App\Http\Controllers\Client\PeraturanKepabeananController;
 use App\Http\Controllers\Dashboard\Beranda\FaqCategoryController;
+use App\Http\Controllers\Dashboard\Layanan\MainServiceController;
 use App\Http\Controllers\Dashboard\Profile\AchievementController;
 use App\Http\Controllers\Dashboard\Profile\CertificateController;
 use App\Http\Controllers\Dashboard\Profile\SopCategoryController;
@@ -169,6 +170,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/organizational', [OrganizationalStructureController::class, 'getOrganizationImage']);
         Route::post('/organizational', [OrganizationalStructureController::class, 'store_image']);
         Route::delete('/organizational/{id}', [OrganizationalStructureController::class, 'delete_image']);
+
+        // main service
+        Route::get('/main_service', [MainServiceController::class, 'getMainService']);
+        Route::get('/main_service/{id}', [MainServiceController::class, 'getMainServiceById']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);

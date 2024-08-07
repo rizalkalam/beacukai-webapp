@@ -50,14 +50,22 @@ class FaqCategoryController extends Controller
         }
 
         try {
-            $data = FaqCategory::create([
-                'name' => request('name')
-            ]);
-
-            return response()->json([
-                'message' => 'Data success created',
-                'data' => $data,
-            ]);
+            $data_check = FaqCategory::where('name', request('name'))->exists();
+            if (!$data_check) {
+                $data = FaqCategory::create([
+                    'name' => request('name')
+                ]);
+    
+                return response()->json([
+                    'message' => 'Data success created',
+                    'data' => $data,
+                ]);
+            } else {
+                return response()->json([
+                    'message' => 'failed',
+                    'errors' => 'Category names are available',
+                ], 400);
+            }
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
@@ -82,16 +90,25 @@ class FaqCategoryController extends Controller
         }
 
         try {
-            $data = FaqCategory::where('id', $id)->first();
+            $data_check = FaqCategory::where('name', request('name'))->exists();
 
-            $data->update([
-                'name' => request('name')
-            ]);
+            if (!$data_check) {
+                $data = FaqCategory::where('id', $id)->first();
 
-            return response()->json([
-                'message' => 'Data success updated',
-                'data' => $data,
-            ]);
+                $data->update([
+                    'name' => request('name')
+                ]);
+
+                return response()->json([
+                    'message' => 'Data success updated',
+                    'data' => $data,
+                ]);
+            } else {
+                return response()->json([
+                    'message' => 'failed',
+                    'errors' => 'Category names are available',
+                ], 400);
+            }
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
