@@ -99,7 +99,7 @@ class OrganizationalStructureController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'failed delete data',
-            ], 400);
+            ], 403);
         }
     }
 }
