@@ -46,7 +46,7 @@ class OrganizationalStructureController extends Controller
                 return response()->json([
                     'message' => 'failed add data',
                     'data' => [],
-                ], 400);
+                ], 422);
             } else {
                 $image = $request->file('image');
 
