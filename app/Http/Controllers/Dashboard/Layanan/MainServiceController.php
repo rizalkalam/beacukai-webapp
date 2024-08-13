@@ -12,14 +12,18 @@ class MainServiceController extends Controller
 {
     public function getMainServiceCategory()
     {
-        $data = MainService::get();
+        $data = MainService::get()
+        ->select([
+            'id',
+            'name'
+        ]);
 
-        $names = $data->pluck('name'); 
+        // $names = $data->pluck('name'); 
 
         return response()->json([
             'success' => true,
             'message' => 'main_service_category',
-            'data' => $names,
+            'data' => $data,
         ]);
     }
 
