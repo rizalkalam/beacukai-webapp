@@ -36,7 +36,7 @@ class KepabeananController extends Controller
                 "message" => "Data file kepabeanan is empty",
                 "regulation_id" => $regulationId,
                 "data" => []
-            ], 200);
+            ], 404);
         }
 
         $dataRegulation = KepabeananRegulation::where('regulation_name', $regulationName)->first();

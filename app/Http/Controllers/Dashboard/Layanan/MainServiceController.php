@@ -32,6 +32,13 @@ class MainServiceController extends Controller
             return $query->where('name', $categoryName);
         })->get();
 
+        if ($data->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'not found'
+            ], 404);
+        }
+
         return response()->json([
             'success' => true,
             'message' => 'main_service',

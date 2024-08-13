@@ -37,7 +37,7 @@ class CukaiController extends Controller
                 "message" => "Data file cukai is empty",
                 "regulation_id" => $regulationId,
                 "data" => []
-            ], 200);
+            ], 404);
         }
 
         $dataRegulation = CukaiRegulation::where('regulation_name', $regulationName)->first();
