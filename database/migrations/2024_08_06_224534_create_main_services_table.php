@@ -14,20 +14,21 @@ return new class extends Migration
         Schema::create('main_services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('title')->nullable();
-            $table->text('service_description')->nullable();
-            $table->string('title_service_image_1')->nullable();
-            $table->string('service_image_1')->nullable();
-            $table->string('title_service_image_2')->nullable();
-            $table->string('service_image_2')->nullable();
-            $table->string('title_service_flow')->nullable();
-            $table->text('description_of_service_flow')->nullable();
-            $table->string('title_supporting_image_1')->nullable();
-            $table->string('supporting_image_1')->nullable();
-            $table->text('description_of_supporting_1')->nullable();
-            $table->string('title_supporting_image_2')->nullable();
-            $table->string('supporting_image_2')->nullable();
-            $table->text('description_of_supporting_2')->nullable();
+            $table->string('sub_title_1')->nullable();
+            $table->string('image_1')->nullable();
+            $table->text('information_1')->nullable();
+            $table->string('sub_title_2')->nullable();
+            $table->string('image_2')->nullable();
+            $table->text('information_2')->nullable();
+            $table->string('sub_title_3')->nullable();
+            $table->string('image_3')->nullable();
+            $table->text('information_3')->nullable();
+            $table->string('sub_title_4')->nullable();
+            $table->string('image_4')->nullable();
+            $table->text('information_4')->nullable();
+            $table->string('sub_title_5')->nullable();
+            $table->string('image_5')->nullable();
+            $table->text('information_5')->nullable();
             $table->timestamps();
         });
     }

@@ -46,24 +46,30 @@ class MainServiceController extends Controller
         ]);
     }
 
+    private function storeImage($image)
+    {
+        return $image->storeAs('service_image', uniqid() . '_' . $image->getClientOriginalName());
+    }
+
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nama_layanan' => 'required',
-            'judul_layanan' => 'nullable',
-            'keterangan_layanan' => 'nullable',
-            'judul_gambar_layanan_1' => 'nullable',
-            'gambar_layanan_1' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
-            'judul_gambar_layanan_2' => 'nullable',
-            'gambar_layanan_2' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
-            'judul_alur_layanan' => 'nullable',
-            'keterangan_alur_layanan' => 'nullable',
-            'judul_gambar_penunjang_layanan_1' => 'nullable',
-            'gambar_penunjang_layanan_1' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
-            'keterangan_penunjang_layanan_1' => 'nullable',
-            'judul_gambar_penunjang_layanan_2' => 'nullable',
-            'gambar_penunjang_layanan_2' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
-            'keterangan_penunjang_layanan_2' => 'nullable',
+            'sub_judul_1' => 'nullable',
+            'gambar_1' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_1' => 'nullable',
+            'sub_judul_2' => 'nullable',
+            'gambar_2' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_2' => 'nullable',
+            'sub_judul_3' => 'nullable',
+            'gambar_3' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_3' => 'nullable',
+            'sub_judul_4' => 'nullable',
+            'gambar_4' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_4' => 'nullable',
+            'sub_judul_5' => 'nullable',
+            'gambar_5' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_5' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -76,43 +82,30 @@ class MainServiceController extends Controller
 
         try {
             $filePaths = [];
-
-            if ($request->hasFile('gambar_layanan_1')) {
-                $image_1 = $request->file('gambar_layanan_1');
-                $filePaths['service_image_1'] = $image_1->storeAs('service_image', uniqid() . '_' . $image_1->getClientOriginalName());
-            }
-    
-            if ($request->hasFile('gambar_layanan_2')) {
-                $image_2 = $request->file('gambar_layanan_2');
-                $filePaths['service_image_2'] = $image_2->storeAs('service_image', uniqid() . '_' . $image_2->getClientOriginalName());
-            }
-    
-            if ($request->hasFile('gambar_penunjang_layanan_1')) {
-                $image_3 = $request->file('gambar_penunjang_layanan_1');
-                $filePaths['supporting_image_1'] = $image_3->storeAs('supporting_image', uniqid() . '_' . $image_3->getClientOriginalName());
-            }
-    
-            if ($request->hasFile('gambar_penunjang_layanan_2')) {
-                $image_4 = $request->file('gambar_penunjang_layanan_2');
-                $filePaths['supporting_image_2'] = $image_4->storeAs('supporting_image', uniqid() . '_' . $image_4->getClientOriginalName());
+            for ($i = 1; $i <= 5; $i++) {
+                $imageKey = "gambar_$i";
+                if ($request->hasFile($imageKey)) {
+                    $filePaths["image_$i"] = $this->storeImage($request->file($imageKey));
+                }
             }
 
             $data = MainService::create([
                 'name' => request('nama_layanan'),
-                'title' => request('judul_layanan'),
-                'service_description' => request('keterangan_layanan'),
-                'title_service_image_1' => request('judul_gambar_layanan_1'),
-                'service_image_1' => $filePaths['service_image_1'] ?? null,
-                'title_service_image_2' => $request->input('judul_gambar_layanan_2'),
-                'service_image_2' => $filePaths['service_image_2'] ?? null,
-                'title_service_flow' => $request->input('judul_alur_layanan'),
-                'description_of_service_flow' => $request->input('keterangan_alur_layanan'),
-                'title_supporting_image_1' => $request->input('judul_gambar_penunjang_layanan_1'),
-                'supporting_image_1' => $filePaths['supporting_image_1'] ?? null,
-                'description_of_supporting_1' => $request->input('keterangan_penunjang_layanan_1'),
-                'title_supporting_image_2' => $request->input('judul_gambar_penunjang_layanan_2'),
-                'supporting_image_2' => $filePaths['supporting_image_2'] ?? null,
-                'description_of_supporting_2' => request('keterangan_penunjang_layanan_2'),
+                'sub_title_1' => request('sub_judul_1'),
+                'image_1' => $filePaths['image_1'] ?? null,
+                'information_1' => $request->input('keterangan_1'),
+                'sub_title_2' => request('sub_judul_2'),
+                'image_2' => $filePaths['image_2'] ?? null,
+                'information_2' => $request->input('keterangan_2'),
+                'sub_title_3' => request('sub_judul_3'),
+                'image_3' => $filePaths['image_3'] ?? null,
+                'information_3' => $request->input('keterangan_3'),
+                'sub_title_4' => request('sub_judul_4'),
+                'image_4' => $filePaths['image_4'] ?? null,
+                'information_4' => $request->input('keterangan_4'),
+                'sub_title_5' => request('sub_judul_5'),
+                'image_5' => $filePaths['image_5'] ?? null,
+                'information_5' => $request->input('keterangan_5'),
             ]);
 
             return response()->json([
@@ -132,20 +125,21 @@ class MainServiceController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama_layanan' => 'required',
-            'judul_layanan' => 'nullable',
-            'keterangan_layanan' => 'nullable',
-            'judul_gambar_layanan_1' => 'nullable',
-            'gambar_layanan_1' => 'nullable|image',
-            'judul_gambar_layanan_2' => 'nullable',
-            'gambar_layanan_2' => 'nullable|image',
-            'judul_alur_layanan' => 'nullable',
-            'keterangan_alur_layanan' => 'nullable',
-            'judul_gambar_penunjang_layanan_1' => 'nullable',
-            'gambar_penunjang_layanan_1' => 'nullable|image',
-            'keterangan_penunjang_layanan_1' => 'nullable',
-            'judul_gambar_penunjang_layanan_2' => 'nullable',
-            'gambar_penunjang_layanan_2' => 'nullable|image',
-            'keterangan_penunjang_layanan_2' => 'nullable',
+            'sub_judul_1' => 'nullable',
+            'gambar_1' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_1' => 'nullable',
+            'sub_judul_2' => 'nullable',
+            'gambar_2' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_2' => 'nullable',
+            'sub_judul_3' => 'nullable',
+            'gambar_3' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_3' => 'nullable',
+            'sub_judul_4' => 'nullable',
+            'gambar_4' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_4' => 'nullable',
+            'sub_judul_5' => 'nullable',
+            'gambar_5' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
+            'keterangan_5' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -165,84 +159,47 @@ class MainServiceController extends Controller
                     'message' => 'Data not found',
                 ], 404);
             }
-
-             // Cek dan simpan file gambar baru jika ada
-            if ($request->hasFile('gambar_layanan_1')) {
-                // Hapus file lama
-                if ($data->service_image_1) {
-                    Storage::delete($data->service_image_1);
+            
+            $filePaths = [];
+            for ($i = 1; $i <= 5; $i++) {
+                $imageKey = "gambar_$i";
+                $existingImage = $data->{"image_$i"};
+                
+                if ($request->hasFile($imageKey)) {
+                    // Hapus file lama
+                    if ($existingImage) {
+                        Storage::delete($existingImage);
+                    }
+                    $filePaths["image_$i"] = $request->file($imageKey)->storeAs(
+                        'service_image', 
+                        uniqid() . '_' . $request->file($imageKey)->getClientOriginalName()
+                    );
+                } else {
+                    // Hapus file lama jika tidak ada file baru
+                    if ($existingImage) {
+                        Storage::delete($existingImage);
+                    }
+                    $filePaths["image_$i"] = null;
                 }
-                $image_1 = $request->file('gambar_layanan_1');
-                $filePaths['service_image_1'] = $image_1->storeAs('service_image', uniqid() . '_' . $image_1->getClientOriginalName());
-            } else {
-                // Hapus file lama jika tidak ada file baru
-                if ($data->service_image_1) {
-                    Storage::delete($data->service_image_1);
-                }
-                $filePaths['service_image_1'] = null;
-            }
-
-            if ($request->hasFile('gambar_layanan_2')) {
-                // Hapus file lama
-                if ($data->service_image_2) {
-                    Storage::delete($data->service_image_2);
-                }
-                $image_2 = $request->file('gambar_layanan_2');
-                $filePaths['service_image_2'] = $image_2->storeAs('service_image', uniqid() . '_' . $image_2->getClientOriginalName());
-            } else {
-                // Hapus file lama jika tidak ada file baru
-                if ($data->service_image_2) {
-                    Storage::delete($data->service_image_2);
-                }
-                $filePaths['service_image_2'] = null;
-            }
-
-            if ($request->hasFile('gambar_penunjang_layanan_1')) {
-                // Hapus file lama
-                if ($data->supporting_image_1) {
-                    Storage::delete($data->supporting_image_1);
-                }
-                $image_3 = $request->file('gambar_penunjang_layanan_1');
-                $filePaths['supporting_image_1'] = $image_3->storeAs('supporting_image', uniqid() . '_' . $image_3->getClientOriginalName());
-            } else {
-                // Hapus file lama jika tidak ada file baru
-                if ($data->supporting_image_1) {
-                    Storage::delete($data->supporting_image_1);
-                }
-                $filePaths['supporting_image_1'] = null;
-            }
-
-            if ($request->hasFile('gambar_penunjang_layanan_2')) {
-                // Hapus file lama
-                if ($data->supporting_image_2) {
-                    Storage::delete($data->supporting_image_2);
-                }
-                $image_4 = $request->file('gambar_penunjang_layanan_2');
-                $filePaths['supporting_image_2'] = $image_4->storeAs('supporting_image', uniqid() . '_' . $image_4->getClientOriginalName());
-            } else {
-                // Hapus file lama jika tidak ada file baru
-                if ($data->supporting_image_2) {
-                    Storage::delete($data->supporting_image_2);
-                }
-                $filePaths['supporting_image_2'] = null;
             }
 
             $data->update([
                 'name' => request('nama_layanan'),
-                'title' => request('judul_layanan'),
-                'service_description' => request('keterangan_layanan'),
-                'title_service_image_1' => request('judul_gambar_layanan_1'),
-                'service_image_1' => $filePaths['service_image_1'],
-                'title_service_image_2' => request('judul_gambar_layanan_2'),
-                'service_image_2' => $filePaths['service_image_2'],
-                'title_service_flow' => request('judul_alur_layanan'),
-                'description_of_service_flow' => request('keterangan_alur_layanan'),
-                'title_supporting_image_1' => request('judul_gambar_penunjang_layanan_1'),
-                'supporting_image_1' => $filePaths['supporting_image_1'],
-                'description_of_supporting_1' => request('keterangan_penunjang_layanan_1'),
-                'title_supporting_image_2' => request('judul_gambar_penunjang_layanan_2'),
-                'supporting_image_2' => $filePaths['supporting_image_2'],
-                'description_of_supporting_2' => request('keterangan_penunjang_layanan_2'),
+                'sub_title_1' => request('sub_judul_1'),
+                'image_1' => $filePaths['image_1'] ?? null,
+                'information_1' => $request->input('keterangan_1'),
+                'sub_title_2' => request('sub_judul_2'),
+                'image_2' => $filePaths['image_2'] ?? null,
+                'information_2' => $request->input('keterangan_2'),
+                'sub_title_3' => request('sub_judul_3'),
+                'image_3' => $filePaths['image_3'] ?? null,
+                'information_3' => $request->input('keterangan_3'),
+                'sub_title_4' => request('sub_judul_4'),
+                'image_4' => $filePaths['image_4'] ?? null,
+                'information_4' => $request->input('keterangan_4'),
+                'sub_title_5' => request('sub_judul_5'),
+                'image_5' => $filePaths['image_5'] ?? null,
+                'information_5' => $request->input('keterangan_5'),
             ]);
 
             return response()->json([
@@ -270,24 +227,15 @@ class MainServiceController extends Controller
         }
 
         try {
-            // Hapus file gambar jika ada
-            if ($data->service_image_1) {
-                Storage::delete($data->service_image_1);
+            $imageKeys = ['image_1', 'image_2', 'image_3', 'image_4', 'image_5'];
+
+            foreach ($imageKeys as $imageKey) {
+                // Hapus file gambar jika ada
+                if ($data->$imageKey) {
+                    Storage::delete($data->$imageKey);
+                }
             }
     
-            if ($data->service_image_2) {
-                Storage::delete($data->service_image_2);
-            }
-    
-            if ($data->supporting_image_1) {
-                Storage::delete($data->supporting_image_1);
-            }
-    
-            if ($data->supporting_image_2) {
-                Storage::delete($data->supporting_image_2);
-            }
-    
-            // Hapus data dari database
             $data->delete();
     
             return response()->json([
