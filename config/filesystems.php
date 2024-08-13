@@ -77,6 +77,7 @@ return [
         public_path('file_kepabeanan') => storage_path('app/file_kepabeanan'),
         public_path('certificates') => storage_path('app/certificates'),
         public_path('organizational_structure') => storage_path('app/organizational_structure'),
+        public_path('service_image') => storage_path('app/service_image'),
     ],
 
 ];

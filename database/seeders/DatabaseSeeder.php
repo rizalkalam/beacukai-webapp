@@ -16,6 +16,7 @@ use Database\Seeders\ServiceSeeder;
 use Database\Seeders\KepabeananSeeder;
 use Database\Seeders\AchievementSeeder;
 use Database\Seeders\CertificateSeeder;
+use Database\Seeders\MainServiceSeeder;
 use Database\Seeders\ServiceUserSeeder;
 use Database\Seeders\SopCategorySeeder;
 use Database\Seeders\WorkingAreaSeeder;
@@ -57,6 +58,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             ServicePromiseSeeder::class,
             OrganizationalStructureSeeder::class,
+            MainServiceSeeder::class,
         ]);
     }
 }

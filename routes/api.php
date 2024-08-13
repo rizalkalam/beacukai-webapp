@@ -172,8 +172,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/organizational/{id}', [OrganizationalStructureController::class, 'delete_image']);
 
         // main service
-        Route::get('/main_service', [MainServiceController::class, 'getMainService']);
-        Route::get('/main_service/{id}', [MainServiceController::class, 'getMainServiceById']);
+        Route::get('/main_service_category', [MainServiceController::class, 'getMainServiceCategory']);
+        Route::get('/main_service', [MainServiceController::class, 'getMainServiceByCategory']);
+        Route::post('/main_service', [MainServiceController::class, 'create']);
+        Route::post('/main_service/{id}', [MainServiceController::class, 'update']);
+        Route::delete('/main_service/{id}', [MainServiceController::class, 'delete']);
     });
 
     Route::post('/logout', [AuthController::class, 'logout']);
