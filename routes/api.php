@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Client\PrestasiController;
 use App\Http\Controllers\Client\StrukturController;
 use App\Http\Controllers\Client\FaqClientController;
+use App\Http\Controllers\Client\LayananUtamaController;
 use App\Http\Controllers\Client\PenggunaJasaController;
 use App\Http\Controllers\Client\IndeksKepuasanController;
 use App\Http\Controllers\Client\PeraturanCukaiController;
@@ -219,3 +220,7 @@ Route::get('/struktur', [StrukturController::class, 'index']);
 
 // layanan
 Route::get('/service', [LayananController::class, 'index']);
+
+// layanan utama
+Route::get('/main_service_category', [LayananUtamaController::class, 'getMainServiceCategory']);
+Route::get('/main_service', [LayananUtamaController::class, 'getMainServiceByCategory']);
