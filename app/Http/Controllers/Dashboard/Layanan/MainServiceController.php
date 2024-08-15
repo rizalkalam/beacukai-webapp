@@ -175,11 +175,7 @@ class MainServiceController extends Controller
                         uniqid() . '_' . $request->file($imageKey)->getClientOriginalName()
                     );
                 } else {
-                    // Hapus file lama jika tidak ada file baru
-                    if ($existingImage) {
-                        Storage::delete($existingImage);
-                    }
-                    $filePaths["image_$i"] = null;
+                    $filePaths["image_$i"] = $existingImage;
                 }
             }
 

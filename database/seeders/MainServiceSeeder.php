@@ -30,7 +30,7 @@ class MainServiceSeeder extends Seeder
                 'image_4' => 'service_image/img4.png',
                 'information_4' => 'Layanan Google yang ditawarkan tanpa biaya ini dapat langsung menerjemahkan berbagai kata, frasa, dan halaman web ke bahasa Indonesia dan lebih dari 100 ... DeepL Translate: Penerjemah paling akurat di seluruh dunia DeepL Translate https://www.deepl.com › translator Terjemahkan teks & berkas dokumen secara instan. Terjemahan yang akurat untuk individu dan tim. Jutaan orang menerjemahkan dengan DeepL setiap hari.',
                 'sub_title_5' => 'Test5',
-                'image_5' => 'service_image/dearsenna.png',
+                'image_5' => null,
                 'information_5' => 'Layanan Google yang ditawarkan tanpa biaya ini dapat langsung menerjemahkan berbagai kata, frasa, dan halaman web ke bahasa Indonesia dan lebih dari 100 ... DeepL Translate: Penerjemah paling akurat di seluruh dunia DeepL Translate https://www.deepl.com › translator Terjemahkan teks & berkas dokumen secara instan. Terjemahan yang akurat untuk individu dan tim. Jutaan orang menerjemahkan dengan DeepL setiap hari.',
             ],
             [
