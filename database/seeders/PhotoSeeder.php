@@ -15,47 +15,65 @@ class PhotoSeeder extends Seeder
     {
         Photo::create([
             'id' => 1,
-            'file' => 'photos/poto1.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto1.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 2,
-            'file' => 'photos/poto2.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto2.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 3,
-            'file' => 'photos/poto3.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto3.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 4,
-            'file' => 'photos/poto4.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto4.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 5,
-            'file' => 'photos/poto5.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto5.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 6,
-            'file' => 'photos/poto6.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto6.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 7,
-            'file' => 'photos/poto7.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto7.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 8,
-            'file' => 'photos/poto8.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto8.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
 
         Photo::create([
             'id' => 9,
-            'file' => 'photos/poto9.jpg'
+            'title' => 'Jagongan BCKU Bersama Pengusaha Kawasan Berikat',
+            'file' => 'photos/poto9.jpg',
+            'description' => 'Langit senja mulai berubah warna, mencampurkan jingga dengan semburat merah muda yang membentang di cakrawala. Angin sepoi-sepoi menyapa dedaunan, membuat mereka bergoyang lembut seolah menari mengikuti alunan alam. Di kejauhan, suara burung-burung kembali ke sarangnya, menciptakan harmoni yang menenangkan di tengah hiruk-pikuk kehidupan kota yang mulai meredup. '
         ]);
     }
 }

@@ -45,6 +45,17 @@ class BerandaController extends Controller
         ], 200);
     }
 
+    public function photoById($id)
+    {
+        $data = Photo::where('id', $id)->first();
+
+        return response()->json([
+            "success" => true,
+            "message" => "photo by id",
+            "data" => $data,
+        ], 200);
+    }
+
     public function revenue()
     {
         $data = Revenue::first();
