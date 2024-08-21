@@ -111,7 +111,7 @@ class PhotoController extends Controller
 
             $data->update([
                 'title' => request('title'),
-                'file' => $file_request,
+                'file' => $file_request ?? null,
                 'description' => request('description')
             ]);
 
