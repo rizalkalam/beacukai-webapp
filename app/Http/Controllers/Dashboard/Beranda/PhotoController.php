@@ -27,6 +27,13 @@ class PhotoController extends Controller
         $data = Photo::when($title, function ($query) use ($title) {
             return $query->where('title', $title);
         })->get();
+        
+        if ($data->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'not found'
+            ], 404);
+        }
 
         return response()->json([
             'success' => true,
