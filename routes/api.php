@@ -71,7 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // photo
         Route::get('/photo', [PhotoController::class, 'index']);
-        Route::get('/photo/{id}', [PhotoController::class, 'getPhotoById']);
+        Route::get('/photo', [PhotoController::class, 'getPhotoById']);
         Route::post('/photo', [PhotoController::class, 'store_photo']);
         Route::post('/photo/{id}', [PhotoController::class, 'update_photo']);
         Route::delete('/photo/{id}', [PhotoController::class, 'delete_photo']);
@@ -189,7 +189,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/banners', [BerandaController::class, 'banners']);
 Route::get('/videos', [BerandaController::class, 'videos']);
 Route::get('/photos', [BerandaController::class, 'photos']);
-Route::get('/photo/{id}', [BerandaController::class, 'photoById']);
+Route::get('/photo', [BerandaController::class, 'photoById']);
 Route::get('/revenue', [BerandaController::class, 'revenue']);
 
 // faq
