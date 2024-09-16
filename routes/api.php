@@ -189,7 +189,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/banners', [BerandaController::class, 'banners']);
 Route::get('/videos', [BerandaController::class, 'videos']);
 Route::get('/photos', [BerandaController::class, 'photos']);
-Route::get('/photo', [BerandaController::class, 'photoById']);
+Route::get('/photo/{id}', [BerandaController::class, 'photoById']);
 Route::get('/revenue', [BerandaController::class, 'revenue']);
 
 // faq

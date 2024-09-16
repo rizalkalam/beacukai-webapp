@@ -45,12 +45,14 @@ class BerandaController extends Controller
         ], 200);
     }
 
-    public function photoById()
+    public function photoById($id)
     {
-        $title = request('title', null);
-        $data = Photo::when($title, function ($query) use ($title) {
-            return $query->where('title', $title);
-        })->get();
+        // $title = request('title', null);
+        // $data = Photo::when($title, function ($query) use ($title) {
+        //     return $query->where('title', $title);
+        // })->get();
+
+        $data = Photo::where('id', $id)->get();
 
         if ($data->isEmpty()) {
             return response()->json([
