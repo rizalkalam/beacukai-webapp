@@ -71,7 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // photo
         Route::get('/photo', [PhotoController::class, 'index']);
-        Route::get('/photo', [PhotoController::class, 'getPhotoById']);
+        Route::get('/photo/{id}', [PhotoController::class, 'getPhotoById']);
         Route::post('/photo', [PhotoController::class, 'store_photo']);
         Route::post('/photo/{id}', [PhotoController::class, 'update_photo']);
         Route::delete('/photo/{id}', [PhotoController::class, 'delete_photo']);

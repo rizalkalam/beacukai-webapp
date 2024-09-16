@@ -21,12 +21,9 @@ class PhotoController extends Controller
         ]);
     }
 
-    public function getPhotoById()
+    public function getPhotoById($id)
     {
-        $title = request('title', null);
-        $data = Photo::when($title, function ($query) use ($title) {
-            return $query->where('title', $title);
-        })->get();
+        $data = Photo::where('id', $id)->get();
         
         if ($data->isEmpty()) {
             return response()->json([
