@@ -1,0 +1,7 @@
+name: my-laravel-app
+type: web
+build:
+  image: php:8.1-fpm
+  commands:
+    - composer install
+    - cp .env.example .env
