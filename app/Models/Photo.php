@@ -15,4 +15,12 @@ class Photo extends Model
         'description'// Add 'file' to the $fillable array
         // other fillable attributes...
     ];
+
+    // PST FUNCTION BOOT()
+    // parent::boot();
+    // static::creating(function ($model) {
+    //     if (empty($model->uuid)) {
+    //         $model->uuid = (string) Str::uuid();
+    //     }
+    // });
 }

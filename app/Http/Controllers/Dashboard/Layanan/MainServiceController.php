@@ -72,8 +72,9 @@ class MainServiceController extends Controller
 
     public function create(Request $request)
     {
+        // if new main service name is not null
         $validator = Validator::make($request->all(), [
-            'nama_layanan' => 'required',
+            'nama_layanan' => 'required|unique:main_services,name',
             'sub_judul_1' => 'nullable',
             'gambar_1' => 'nullable|mimes:jpeg,png,jpg,gif,svg|file|max:3048',
             'keterangan_1' => 'nullable',
