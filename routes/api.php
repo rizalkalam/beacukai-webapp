@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Client\SopController;
 use App\Http\Controllers\Client\BerandaController;
 use App\Http\Controllers\Client\LayananController;
