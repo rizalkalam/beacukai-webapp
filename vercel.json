@@ -3,10 +3,6 @@
     "builds": [
         { "src": "api/index.php", "use": "@vercel/php@0.5.2" }
     ],
-    "framework": null,
-    "functions": {
-        "api/index.php": { "runtime": "@vercel/php@latest" }
-    },
     "routes": [
         { "src": "/(.*)", "dest": "api/index.php" }
     ],
