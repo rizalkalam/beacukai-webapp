@@ -50,6 +50,12 @@ Route::get('/test', function () {
     return response()->json(['message' => 'Hello World']);
 })->name('test');
 
+// run migrate db after deploy
+Route::get('/migrate', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return 'Migration completed';
+});
+
 // salah token
 Route::get('/wrongtoken', function () {
     return response()->json(['message' => 'Hello World']);
