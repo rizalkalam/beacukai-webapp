@@ -54,7 +54,7 @@ Route::get('/test', function () {
 // run migrate db after deploy
 Route::get('/migrate', function () {
     Artisan::call('migrate', ['--force' => true]);
-    return 'Migration completed';
+    return response()->json(['message' => 'Migration completed']);
 });
 
 // salah token
