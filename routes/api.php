@@ -45,8 +45,15 @@ use App\Http\Controllers\Dashboard\Profile\OrganizationalStructureController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+// test
+Route::get('/test', function () {
+    return response()->json(['message' => 'Hello World']);
+})->name('test');
+
 // salah token
-Route::get('/wrongtoken', [AuthController::class, 'wrongtoken'])->name('wrongtoken');
+Route::get('/wrongtoken', function () {
+    return response()->json(['message' => 'Hello World']);
+})->name('wrongtoken');
 
 Route::post('/login', [AuthController::class, 'login']);
 
