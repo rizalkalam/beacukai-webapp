@@ -28,9 +28,10 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "4gg.h.filess.io",
+        "DB_HOST": "mysql.railway.internal",
         "DB_PORT": "3306",
-        "DB_DATABASE": "db2024_stormtorn",
-        "DB_USERNAME": "db2024_stormtorn"
+        "DB_DATABASE": "railway",
+        "DB_USERNAME": "root",
+        "DB_PASSWORD": "PspyfnnWxTwYPxlXfMpIJeevTudbLVBw"
     }
 }
