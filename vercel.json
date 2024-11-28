@@ -6,8 +6,12 @@
     },
     "rewrites": [
         {
-            "source": "/api/(.*)",
-            "destination": "/index.php?route=$1"
+          "source": "/api/(.*)",
+          "destination": "/index.php?route=$1"
+        },
+        {
+          "source": "/(.*)",
+          "destination": "/index.php"
         }
     ],
     "public": true,
