@@ -19,6 +19,12 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    # Send Requests To API Front Controller...
-    RewriteRule ^api/.*$ /api/index.php [L]
+    # Rewrite API Requests to index.php
+    RewriteCond %{REQUEST_URI} ^/api/
+    RewriteRule ^api/(.*)$ /index.php?route=$1 [L,QSA]
+
+    # If request is not for a file or directory, send to index.php (for routing in Laravel)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
 </IfModule>
