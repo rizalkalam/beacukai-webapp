@@ -10,12 +10,6 @@
             "dest": "/api/index.php"
         }
     ],
-    "rewrites": [
-        {
-          "source": "/api/(.*)",
-          "destination": "/index.php"
-        }
-    ],
     "public": true,
     "buildCommand": "vite build",
     "outputDirectory": "public",
