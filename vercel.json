@@ -4,10 +4,10 @@
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.1" }
     },
-    "rewrites": [
+    "routes": [
         {
-          "source": "/api/(.*)",
-          "destination": "/index.php?route=$1"
+            "src": "/(.*)",
+            "dest": "/api/index.php"
         }
     ],
     "public": true,
