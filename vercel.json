@@ -6,6 +6,10 @@
     },
     "routes": [
         {
+            "src": "/banners/(.*)",
+            "dest": "public/banners/"
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
