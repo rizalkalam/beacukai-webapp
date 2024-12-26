@@ -17,7 +17,7 @@ pipeline {
         stage('Validate Workspace') {
             steps {
                 script {
-                    def workspacePath = "/home/rizalkalam/.jenkins/workspace/beacukai-webapp"
+                    def workspacePath = "/home/rizalkalam/.jenkins/workspace/bcwebapp"
                     def isWorkspaceExists = fileExists("${workspacePath}/.git")
                     if (!isWorkspaceExists) {
                         error "Workspace ${workspacePath} tidak ditemukan atau kosong!"
