@@ -28,7 +28,9 @@ pipeline {
                     cp /home/rizalkalam/.jenkins/workspace/beacukai-webapp/.env.example /var/www/bcweb.nugasyuk.my.id/html/.env
                     '''
 
-                    // Update konfigurasi database
+                     // Copy dan Update .env
+                    sh '''
+                    cp /home/rizalkalam/.jenkins/workspace/beacukai-webapp/.env.example /var/www/bcweb.nugasyuk.my.id/html/.env
                     sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' /var/www/bcweb.nugasyuk.my.id/html/.env
                     sed -i 's/DB_PORT=.*/DB_PORT=3306/' /var/www/bcweb.nugasyuk.my.id/html/.env
                     sed -i 's/DB_DATABASE=.*/DB_DATABASE=bc-webapp/' /var/www/bcweb.nugasyuk.my.id/html/.env
