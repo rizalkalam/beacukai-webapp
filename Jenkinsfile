@@ -14,6 +14,18 @@ pipeline {
             }
         }
 
+        stage('Validate Workspace') {
+            steps {
+                script {
+                    def workspacePath = "/home/rizalkalam/.jenkins/workspace/beacukai-webapp"
+                    def isWorkspaceExists = fileExists("${workspacePath}/.git")
+                    if (!isWorkspaceExists) {
+                        error "Workspace ${workspacePath} tidak ditemukan atau kosong!"
+                    }
+                }
+            }
+        }
+
         stage('Deploy Laravel') {
             steps {
                 script {
