@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    environment {
+        DB_HOST = '127.0.0.1'
+        DB_PORT = '3306'
+        DB_DATABASE = 'bc-webapp'
+        DB_USERNAME = 'root'
+        DB_PASSWORD = 'rizalkalam178'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -23,20 +30,16 @@ pipeline {
                     composer install --no-dev --optimize-autoloader
                     '''
 
-                    // Copy .env
+                    // Copy dan Update .env
                     sh '''
                     cp /home/rizalkalam/.jenkins/workspace/beacukai-webapp/.env.example /var/www/bcweb.nugasyuk.my.id/html/.env
+                    sed -i 's/DB_HOST=.*/DB_HOST=${DB_HOST}/' /var/www/bcweb.nugasyuk.my.id/html/.env
+                    sed -i 's/DB_PORT=.*/DB_PORT=${DB_PORT}/' /var/www/bcweb.nugasyuk.my.id/html/.env
+                    sed -i 's/DB_DATABASE=.*/DB_DATABASE=${DB_DATABASE}/' /var/www/bcweb.nugasyuk.my.id/html/.env
+                    sed -i 's/DB_USERNAME=.*/DB_USERNAME=${DB_USERNAME}/' /var/www/bcweb.nugasyuk.my.id/html/.env
+                    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=${DB_PASSWORD}/' /var/www/bcweb.nugasyuk.my.id/html/.env
                     '''
 
-                     // Copy dan Update .env
-                    sh '''
-                    cp /home/rizalkalam/.jenkins/workspace/beacukai-webapp/.env.example /var/www/bcweb.nugasyuk.my.id/html/.env
-                    sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' /var/www/bcweb.nugasyuk.my.id/html/.env
-                    sed -i 's/DB_PORT=.*/DB_PORT=3306/' /var/www/bcweb.nugasyuk.my.id/html/.env
-                    sed -i 's/DB_DATABASE=.*/DB_DATABASE=bc-webapp/' /var/www/bcweb.nugasyuk.my.id/html/.env
-                    sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' /var/www/bcweb.nugasyuk.my.id/html/.env
-                    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=rizalkalam178/' /var/www/bcweb.nugasyuk.my.id/html/.env
-                    
                     // Artisan Commands
                     sh '''
                     cd /var/www/bcweb.nugasyuk.my.id/html/
