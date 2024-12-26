@@ -31,7 +31,7 @@ pipeline {
                 script {
                     // Salin file ke server tujuan
                     sh '''
-                    sudo cp -r /home/rizalkalam/.jenkins/workspace/beacukai-webapp/* /var/www/bcweb.nugasyuk.my.id/html/
+                    sudo cp -r /home/rizalkalam/.jenkins/workspace/bcwebapp/* /var/www/bcweb.nugasyuk.my.id/html/
                     sudo chmod -R 755 /var/www/bcweb.nugasyuk.my.id/html/
                     sudo chown -R www-data:www-data /var/www/bcweb.nugasyuk.my.id/html/
                     '''
